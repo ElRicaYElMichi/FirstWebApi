@@ -1,4 +1,8 @@
+using DotNetEnv;
 var builder = WebApplication.CreateBuilder(args);
+
+//add varibales .env
+Env.Load("../.env");
 
 // Add services to the container.
 
