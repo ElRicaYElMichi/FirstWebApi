@@ -86,12 +86,10 @@ public partial class DatabaseContext : DbContext
 
             entity.HasOne(d => d.Comment).WithMany(p => p.Reactions)
                 .HasForeignKey(d => d.CommentId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Reactions_Comments");
 
             entity.HasOne(d => d.Post).WithMany(p => p.Reactions)
                 .HasForeignKey(d => d.PostId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Reactions_Posts");
 
             entity.HasOne(d => d.User).WithMany(p => p.Reactions)
@@ -121,7 +119,7 @@ public partial class DatabaseContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("name");
             entity.Property(e => e.Password)
-                .HasMaxLength(50)
+                .HasMaxLength(256)
                 .IsUnicode(false)
                 .HasColumnName("password");
             entity.Property(e => e.Username)
